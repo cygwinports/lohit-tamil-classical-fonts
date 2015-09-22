@@ -1,8 +1,8 @@
 inherit font
 
-NAME="font-lohit-tamil-classical-ttf"
+NAME="lohit-tamil-classical-fonts"
 VERSION=2.5.3
-RELEASE=1
+RELEASE=2
 CATEGORY="X11"
 SUMMARY="Lohit Tamil (Classical) font"
 DESCRIPTION="Lohit ('Red' in Sanskrit) is a font family which supports various
@@ -10,6 +10,10 @@ Indic scripts."
 HOMEPAGE="https://fedorahosted.org/lohit/"
 SRC_URI="https://fedorahosted.org/releases/l/o/lohit/lohit-tamil-classical-${VERSION}.tar.gz"
 SRC_DIR="lohit-tamil-classical-${VERSION}"
+
+ARCH=noarch
+
+OBSOLETES="font-lohit-tamil-classical-ttf"
 
 src_compile() {
 	lndirs
@@ -19,7 +23,7 @@ src_compile() {
 
 src_install() {
 	cd ${B}
-	fontinto TTF
+	fontinto ${NAME%-fonts}
 	dofont *.ttf
 
 	dofontconf *.conf
